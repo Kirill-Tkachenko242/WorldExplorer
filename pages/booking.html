@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Book your travel experience with World Explore. Secure, simple, fast - start your adventure today."/>
+  <title>Book Now - WorldExplore</title>
+  <link rel="stylesheet" href="../css/bootstrap-5.3.8-dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../css/fontawesome-free-7.2.0-web/css/all.min.css"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+  <!-- Booking page (made by Kirill) -->
+
+  <nav class="navbar navbar-expand-lg we-navbar fixed-top scrolled" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand we-brand" href="../index.html">
+        <span class="logo-globe">&#9711;</span>
+        <span class="logo-text">World <strong>Explore</strong></span>
+      </a>
+      <button class="navbar-toggler we-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span><i class="fa fa-bars"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="destinations.html">Destinations</a></li>
+          <li class="nav-item"><a class="nav-link" href="experiences.html">Experiences</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link btn-book active" href="booking.html">Book Now</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <p class="section-label">Your adventure starts here</p>
+      <h1>Book your <span class="accent">journey</span></h1>
+      <p>Three simple steps to the trip of a lifetime. Secure, instant confirmation.</p>
+      <div class="booking-search-summary" id="bookingSearchSummary" style="display:none;"></div>
+    </div>
+  </div>
+
+  <section class="booking-section">
+    <div class="container">
+      <div class="booking-card" id="bookingForm">
+        <!-- Step indicators -->
+        <div class="step-indicator">
+          <div class="step active" data-step="1">
+            <div class="step-dot">1</div>
+          </div>
+          <div class="step-line"></div>
+          <div class="step" data-step="2">
+            <div class="step-dot">2</div>
+          </div>
+          <div class="step-line"></div>
+          <div class="step" data-step="3">
+            <div class="step-dot">3</div>
+          </div>
+        </div>
+
+        <!-- Step 1: trip details -->
+        <div class="booking-step active" id="step1">
+          <h4 style="font-family:Georgia,serif;color:#1A3C5E;margin-bottom:1.5rem">
+            Step 1 - choose your trip
+          </h4>
+
+          <div class="mb-3">
+            <label class="form-label" for="bookDest">
+              Destination <span style="color:#dc3545">*</span>
+            </label>
+            <select class="we-select" id="bookDest" required>
+              <option value="">- Select a destination -</option>
+              <option value="kyoto-japan">Kyoto, Japan - from €1,299</option>
+              <option value="serengeti-tanzania">Serengeti, Tanzania - from €2,599</option>
+              <option value="patagonia-chile">Patagonia, Chile - from €1,899</option>
+              <option value="santorini-greece">Santorini, Greece - from €1,499</option>
+              <option value="bali-indonesia">Bali, Indonesia - from €1,099</option>
+              <option value="machu-picchu-peru">Machu Picchu, Peru - from €1,799</option>
+            </select>
+          </div>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label" for="bookDate">
+                Departure date <span style="color:#dc3545">*</span>
+              </label>
+              <input type="date" class="form-control we-field" id="bookDate" required/>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="bookTravellers">
+                Number of travellers <span style="color:#dc3545">*</span>
+              </label>
+              <select class="we-select" id="bookTravellers" required>
+                <option value="">- Select -</option>
+                <option value="1">1 Traveller</option>
+                <option value="2">2 Travellers</option>
+                <option value="3">3 Travellers</option>
+                <option value="4">4 Travellers</option>
+                <option value="5">5+ Travellers</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <label class="form-label" for="bookType">Experience type</label>
+            <select class="we-select" id="bookType">
+              <option value="standard">Standard - essential experience, great value</option>
+              <option value="comfort">Comfort (+€300) - upgraded accommodation & transport</option>
+              <option value="luxury">Luxury (+€700) - premium everything, private guides</option>
+            </select>
+          </div>
+
+          <div class="mt-3">
+            <label class="form-label" for="bookNotes">Special requests or dietary requirements</label>
+            <textarea class="form-control we-field" id="bookNotes" 
+              rows="3" placeholder="Any dietary needs, accessibility requirements, or special occasions...">
+            </textarea>
+          </div>
+        </div>
+
+        <!-- Step 2: personal details -->
+        <div class="booking-step" id="step2">
+          <h4 style="font-family:Georgia,serif;color:#1A3C5E;margin-bottom:1.5rem">
+            Step 2 - your details
+          </h4>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label" for="bookFirst">
+                First name <span style="color:#dc3545">*</span>
+              </label>
+              <input type="text" class="form-control we-field" id="bookFirst" placeholder="Jane" required/>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="bookLast">
+                Last name <span style="color:#dc3545">*</span>
+              </label>
+              <input type="text" class="form-control we-field" id="bookLast" placeholder="Smith" required/>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="bookEmail">
+                Email address <span style="color:#dc3545">*</span>
+              </label>
+              <input type="email" class="form-control we-field" id="bookEmail" placeholder="kirill@email.com" required/>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="bookPhone">Phone number</label>
+              <input type="tel" class="form-control we-field" id="bookPhone" placeholder="+353 ..."/>
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="bookCountry">Country of residence</label>
+              <select class="we-select" id="bookCountry">
+                <option value="">- Select your country -</option>
+                <option>Ireland</option>
+                <option>United Kingdom</option>
+                <option>Portugal</option>
+                <option>Spain</option>
+                <option>France</option>
+                <option>Germany</option>
+                <option>Italy</option>
+                <option>United States</option>
+                <option>Canada</option>
+                <option>Australia</option>
+                <option>Brazil</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="bookTerms" required/>
+                <label class="form-check-label" for="bookTerms" style="font-size:.88rem;color:#555">
+                  I agree to the <a href="#" style="color:#1A3C5E">
+                  Terms & Conditions</a> and <a href="#" style="color:#1A3C5E">
+                  Privacy Policy</a> <span style="color:#dc3545">*</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: confirmation summary -->
+        <div class="booking-step" id="step3">
+          <h4 style="font-family:Georgia,serif;color:#1A3C5E;margin-bottom:1.5rem">
+            Step 3 - confirm your booking
+          </h4>
+          <div class="price-summary">
+            <h6 style="font-family:Georgia,serif;color:#1A3C5E;margin-bottom:1rem">Booking summary</h6>
+            <div class="price-row"><span>Destination</span><span id="summaryDest">-</span></div>
+            <div class="price-row"><span>Travellers</span><span id="summaryTravellers">-</span></div>
+            <div class="price-row"><span>Experience type</span><span id="summaryType">-</span></div>
+            <div class="price-row"><span>Price per person</span><span id="summaryBase">-</span></div>
+            <div class="price-row price-total"><span>Total</span><span id="summaryTotal">-</span></div>
+          </div>
+
+          <div style="background:rgba(46,125,79,.08);border:1px solid #2E7D4F;border-radius:10px;padding:1rem;margin-bottom:1.5rem">
+            <p style="margin:0;font-size:.88rem;color:#2E7D4F"><i class="fa fa-shield-halved me-2"></i>
+              <strong>Secure booking:</strong> Your booking is protected by 256-bit SSL encryption. 
+              You'll receive a confirmation email immediately.
+            </p>
+          </div>
+
+          <div style="background:rgba(232,168,56,.1);border:1px solid #E8A838;border-radius:10px;padding:1rem">
+            <p style="margin:0;font-size:.88rem;color:#7a5a10"><i class="fa fa-info-circle me-2"></i>
+              <strong>Free cancellation:</strong> cancel up to 30 days before departure for a full refund.
+            </p>
+          </div>
+        </div>
+
+        <!-- Navigation buttons -->
+        <div class="booking-nav mt-4" id="bookingNav">
+          <button class="btn btn-outline-secondary px-4" onclick="prevStep()" id="prevBtn" style="display:none">← Back</button>
+          <button class="btn we-btn-main px-4" onclick="nextStep()" id="nextBtn">Next →</button>
+        </div>
+      </div>
+
+      <!-- Success message -->
+      <div class="booking-card" id="bookingSuccess">
+        <div class="success-icon">🎉</div>
+        <h3>Booking confirmed!</h3>
+        <p style="color:#555;margin-bottom:.5rem">
+          Thank you, <strong id="confirmedName"></strong>! Your adventure is officially booked.
+        </p>
+        <p style="color:#888;font-size:.9rem">
+          Booking reference: <strong id="bookingRef" style="color:#1A3C5E"></strong>
+        </p>
+        <p style="color:#888;font-size:.88rem;margin-top:.5rem">
+          A confirmation email has been sent. Our team will be in touch within 24 hours with 
+          full itinerary details.
+        </p>
+        <a href="../index.html" class="btn we-btn-main mt-3">Back to home</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section style="padding:4rem 0;background:#fff">
+    <div class="container">
+      <div class="row g-4 text-center">
+        <div class="col-md-4">
+          <i class="fa fa-lock" style="font-size:2rem;color:#1A3C5E;margin-bottom:.75rem;display:block"></i>
+          <h5 style="font-family:Georgia,serif;color:#1A3C5E">Secure payments</h5>
+          <p style="color:#666;font-size:.9rem">256-bit SSL encryption on all transactions.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="fa fa-rotate-left" style="font-size:2rem;color:#1A3C5E;margin-bottom:.75rem;display:block"></i>
+          <h5 style="font-family:Georgia,serif;color:#1A3C5E">Free cancellation</h5>
+          <p style="color:#666;font-size:.9rem">Full refund if cancelled 30 days before departure.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="fa fa-headset" style="font-size:2rem;color:#1A3C5E;margin-bottom:.75rem;display:block"></i>
+          <h5 style="font-family:Georgia,serif;color:#1A3C5E">24/7 Support</h5>
+          <p style="color:#666;font-size:.9rem">We're here before, during, and after your trip.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="we-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="we-brand mb-3">
+            <span class="logo-globe">&#9711;</span>
+            <span class="logo-text">World <strong>Explore</strong></span>
+          </div>
+          <p>Crafting extraordinary travel experiences since 2009.</p>
+          <div class="social-links mt-3">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <h5>Explore</h5>
+          <ul class="footer-links">
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="experiences.html">Experiences</a></li>
+            <li><a href="booking.html">Book now</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h5>Company</h5>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5>Newsletter</h5>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email" class="form-control we-input" id="newsletterEmail"/>
+            <button class="btn we-btn-main mt-2 w-100" onclick="subscribeNewsletter()">Subscribe</button>
+            <small id="newsletter-msg" class="mt-1 d-block"></small>
+          </div>
+        </div>
+      </div>
+      <hr class="footer-divider"/>
+      <div class="row footer-bottom">
+        <div class="col-md-6"><p>© 2026 World Explore. All rights reserved.</p></div>
+        <div class="col-md-6 text-md-end"><p>Designed with ♥ for adventurers worldwide</p></div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
+
+  <script src="../js/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/jquery-4.0.0.min.js"></script>
+  <script src="../js/main.js"></script>
+
+  <!-- Show/hide prev button logic -->
+  <script>
+    const origNext = window.nextStep;
+    const origPrev = window.prevStep;
+    window.nextStep = function() {
+      origNext();
+      document.getElementById('prevBtn').style.display = (window.currentStepVal > 1) ? 'inline-block' : 'none';
+    };
+    window.prevStep = function() {
+      origPrev();
+      document.getElementById('prevBtn').style.display = (window.currentStepVal > 1) ? 'inline-block' : 'none';
+    };
+  </script>
+</body>
+</html>
