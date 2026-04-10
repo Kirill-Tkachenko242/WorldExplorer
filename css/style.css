@@ -124,6 +124,8 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
 }
 
 .btn-book:hover {
+  background: #FAF7F0 !important;
+  color: var(--ocean) !important;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(214, 161, 38, .4) !important;
 }
