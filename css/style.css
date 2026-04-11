@@ -35,9 +35,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ============================================================
-   Shared foundation
-   ============================================================ */
+/*  Shared code */
 
 h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
 .accent { color: var(--gold); }
@@ -112,6 +110,10 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
 
 .we-navbar .nav-link:hover,
 .we-navbar .nav-link.active { color: var(--gold) !important; }
+
+.we-navbar .nav-link.btn-book.active {
+  color: var(--ocean) !important;
+}
 
 .btn-book {
   background: var(--gold) !important;
@@ -289,6 +291,8 @@ Kirill - Experiences and Booking pages
   box-shadow: var(--shadow);
   transition: transform var(--transition);
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .exp-card:hover { transform: translateY(-6px); }
@@ -308,10 +312,21 @@ Kirill - Experiences and Booking pages
   border-radius: 20px;
 }
 
-.exp-body { padding: 1.4rem; }
+.exp-body {
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 .exp-body h4 { font-size: 1.15rem; color: var(--ocean); margin-bottom: .5rem; }
 .exp-body p { font-size: .88rem; color: #666; line-height: 1.6; margin-bottom: 1rem; }
-.exp-meta { display: flex; justify-content: space-between; align-items: center; font-size: .85rem; }
+.exp-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: .85rem;
+  margin-top: auto;
+}
 .exp-duration { color: var(--mid-gray); }
 .exp-price { font-weight: 700; color: var(--jungle); font-size: 1rem; }
 
@@ -350,6 +365,40 @@ Kirill - Experiences and Booking pages
 .success-icon { font-size: 4rem; color: var(--jungle); margin-bottom: 1rem; }
 #bookingSuccess h3 { color: var(--ocean); margin-bottom: .5rem; }
 
+.booking-feature {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.booking-feature-icon {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto .85rem;
+  border-radius: 50%;
+  background: rgba(15, 61, 46, .08);
+  color: var(--ocean);
+  font-size: 1.8rem;
+}
+
+.booking-feature h5 {
+  color: var(--ocean);
+  margin-bottom: .5rem;
+}
+
+.booking-feature p {
+  max-width: 220px;
+  margin: 0 auto;
+  color: #666;
+  font-size: .9rem;
+  line-height: 1.6;
+}
+
 /* ============================================================
    Shared responsive utilities
    ============================================================ */
@@ -379,4 +428,638 @@ Kirill - Experiences and Booking pages
 @media (max-width: 576px) {
   .hero-title { font-size: 2.8rem; }
   .cta-banner h2 { font-size: 1.8rem; }
+}
+
+/* Izabel part
+   These styles are for my pages:
+   - index
+   - destinations
+   Card hover effects:
+   https://css-tricks.com/almanac/properties/t/transform/
+
+   Glassmorphism search box:
+   https://css.glass
+
+   CSS variables:
+   https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+
+   Responsive media queries:
+   https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries
+
+   Flexbox layout:
+   https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+
+/* small title area used in my sections */
+.section-header {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* home page hero */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: url("../content/images/Hero.jpg") center/cover no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(8, 28, 21, 0.96) 0%, rgba(15, 61, 46, 0.9) 48%, rgba(7, 23, 17, 0.8) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 440px);
+  align-items: start;
+  column-gap: 3rem;
+  row-gap: 0;
+  color: var(--white);
+  padding-top: 5rem;
+}
+
+/* small text above the main title */
+.hero-tagline {
+  grid-column: 1 / 2;
+  font-size: 0.8rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+/* main title on the home page */
+.hero-title {
+  grid-column: 1 / 2;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 0.95;
+  margin-bottom: 0.5rem;
+  color: var(--white);
+}
+
+/* short text under the title */
+.hero-sub {
+  grid-column: 1 / 2;
+  max-width: 560px;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 1.5rem;
+}
+
+/* buttons in the hero section */
+.hero-actions {
+  grid-column: 1 / 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* search box on the home page */
+.hero-search-bar {
+  grid-column: 2 / 3;
+  grid-row: 1 / span 5;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 28px;
+  padding: 1.35rem;
+  box-shadow: 0 24px 60px rgba(15, 61, 46, 0.22);
+}
+
+/* layout inside the search box */
+.hero-search-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+/* labels in the search box */
+.hero-search-field label {
+  display: block;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 0.55rem;
+  font-weight: 700;
+}
+
+/* wraps the icon and the input together */
+.hero-search-input-wrap {
+  position: relative;
+}
+
+/* icons inside the search inputs */
+.hero-search-input-wrap i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* inputs and select on the hero search */
+.hero-search-input-wrap input,
+.hero-search-input-wrap select {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  border-radius: 14px;
+  padding: 0.95rem 1rem 0.95rem 2.8rem;
+  outline: none;
+}
+
+/* placeholder color */
+.hero-search-input-wrap input::placeholder {
+  color: rgba(255, 255, 255, 0.58);
+}
+
+/* select options */
+.hero-search-input-wrap select option {
+  color: var(--ocean);
+  background: var(--white);
+}
+
+/* focus effect for the search fields */
+.hero-search-input-wrap input:focus,
+.hero-search-input-wrap select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(214, 161, 38, 0.16);
+}
+
+/* search button */
+.hero-search-btn {
+  width: 100%;
+  margin-top: 0.35rem;
+}
+
+/* numbers under the hero */
+.hero-stats {
+  grid-column: 1 / 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+
+/* one stat box */
+.stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.15rem;
+  color: var(--white);
+}
+
+/* big number in the stats */
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--gold);
+}
+
+/* small text under each number */
+.stat small {
+  display: block;
+  margin-left: 0.45rem;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.82rem;
+  letter-spacing: 0.4px;
+}
+
+/* arrow icon to scroll down */
+.hero-scroll-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 2rem;
+  transform: translateX(-50%);
+  color: var(--white);
+  font-size: 1.2rem;
+  cursor: pointer;
+  animation: bounce 1.8s infinite;
+  z-index: 2;
+}
+
+/* destination cards used in home and destinations */
+.dest-card,
+.dest-card-full {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+/* card used on the home page */
+.dest-card {
+  cursor: pointer;
+  height: 100%;
+}
+
+/* hover effect for the cards */
+.dest-card:hover,
+.dest-card-full:hover,
+.why-card:hover,
+.value-card:hover,
+.team-card:hover,
+.contact-form-wrap:hover,
+.contact-info-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(15, 61, 46, 0.18);
+}
+
+/* image area inside the destination card */
+.dest-img {
+  height: 240px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* first image card */
+.dest-img-1 {
+  background-image: url("../content/images/Rio.jpg");
+}
+
+/* second image card */
+.dest-img-2 {
+  background-image: url("../content/images/Russia.jpg");
+}
+
+/* third image card */
+.dest-img-3 {
+  background-image: url("../content/images/ireland.jpg");
+}
+
+/* text area inside the card */
+.dest-info {
+  padding: 1.4rem;
+}
+
+/* small category label */
+.dest-tag {
+  display: inline-block;
+  background: rgba(47, 107, 60, 0.12);
+  color: var(--jungle);
+  padding: 0.28rem 0.8rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+/* destination title */
+.dest-info h3 {
+  color: var(--ocean);
+  margin-bottom: 0.55rem;
+}
+
+/* destination short text */
+.dest-info p {
+  color: #63706a;
+  line-height: 1.7;
+  font-size: 0.92rem;
+}
+
+/* price text */
+.dest-price {
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* rating text on destinations page */
+.dest-rating {
+  color: var(--gold);
+  font-size: 0.85rem;
+  margin-bottom: 0.55rem;
+}
+
+/* cards in the why choose us section on the home page */
+.why-card {
+  height: 100%;
+  background: var(--light-gray);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 1.45rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+/* icon inside the why card */
+.why-icon {
+  display: block;
+  font-size: 1.75rem;
+  color: var(--ocean);
+  margin-bottom: 0.8rem;
+}
+
+/* title in the why card */
+.why-card h4 {
+  color: var(--ocean);
+  font-size: 1.05rem;
+  margin-bottom: 0.45rem;
+}
+
+/* text in the why card */
+.why-card p {
+  color: #63706a;
+  line-height: 1.7;
+  font-size: 0.92rem;
+}
+
+/* hearts in the testimonials */
+.hearts {
+  color: var(--gold);
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+/* filter buttons on destinations page */
+.filter-btn {
+  background: transparent;
+  color: var(--ocean);
+  border: 2px solid var(--ocean);
+  border-radius: 999px;
+  padding: 0.45rem 1.15rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  margin: 0.25rem;
+  transition: all var(--transition);
+}
+
+/* active and hover state for the filter */
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--ocean);
+  color: var(--white);
+}
+
+/* main spacing of the destinations page */
+.dest-grid {
+  padding: 2rem 0 5rem;
+}
+
+/* keeps the cards with same height */
+.dest-grid .row {
+  align-items: stretch;
+}
+
+/* each destination item */
+.dest-item {
+  display: flex;
+}
+
+/* full card used on destinations page */
+.dest-card-full {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+/* image size inside the full card */
+.dest-card-full .dest-img {
+  height: 220px;
+  flex-shrink: 0;
+}
+
+/* card content grows correctly */
+.dest-card-full .dest-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* end of Izabel part */
+
+.about-section {
+  padding: 5rem 0;
+}
+
+.team-card {
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.team-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  border: 4px solid var(--gold);
+  background-size: cover;
+  background-position: center;
+}
+
+.team-t1 {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.team-t2 {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+}
+
+.team-t3 {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.team-card h5 {
+  color: var(--ocean);
+  margin-bottom: 0.2rem;
+}
+
+.team-card small {
+  color: var(--gold);
+  display: block;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  margin-bottom: 0.65rem;
+}
+
+.team-card p,
+.value-card p {
+  color: #63706a;
+  line-height: 1.7;
+  font-size: 0.92rem;
+}
+
+.value-card {
+  height: 100%;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem 1.35rem;
+  border-top: 4px solid var(--ocean);
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.value-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
+  color: var(--gold);
+}
+
+.value-card h4 {
+  color: var(--ocean);
+  margin-bottom: 0.5rem;
+}
+
+.contact-section {
+  background: var(--light-gray);
+  padding: 5rem 0;
+}
+
+.contact-info-card,
+.contact-form-wrap {
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.contact-info-card {
+  height: 100%;
+  background: var(--ocean);
+  color: var(--white);
+  border-radius: var(--radius);
+  padding: 2.4rem;
+  box-shadow: var(--shadow);
+}
+
+.contact-info-card h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.contact-info-card p {
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 1.8rem;
+}
+
+.contact-detail {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1.3rem;
+}
+
+.contact-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(214, 161, 38, 0.18);
+  color: var(--gold);
+}
+
+.contact-detail strong {
+  display: block;
+  opacity: 0.78;
+  margin-bottom: 0.2rem;
+  font-size: 0.84rem;
+}
+
+.contact-form-wrap {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2.4rem;
+  box-shadow: var(--shadow);
+}
+
+.contact-form-wrap h3 {
+  color: var(--ocean);
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  color: var(--ocean);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.form-control.we-field,
+.we-select {
+  border: 1.5px solid #d6ddd8;
+  border-radius: 10px;
+  padding: 0.72rem 1rem;
+  font-size: 0.95rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.form-control.we-field:focus,
+.we-select:focus {
+  border-color: var(--ocean);
+  box-shadow: 0 0 0 3px rgba(15, 61, 46, 0.12);
+  outline: none;
+}
+
+.form-error {
+  border-color: #dc3545 !important;
+}
+
+.form-success-msg {
+  display: none;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(47, 107, 60, 0.12);
+  border: 1px solid var(--jungle);
+  color: var(--jungle);
+  border-radius: 10px;
+}
+
+@media (max-width: 991px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-search-bar {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-stats {
+    gap: 1rem 1.6rem;
+  }
+
+  .contact-info-card {
+    margin-bottom: 1rem;
+  }
+
+  .about-section,
+  .contact-section {
+    padding: 4rem 0;
+  }
+
+  .contact-form-wrap,
+  .contact-info-card {
+    padding: 1.6rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-search-bar {
+    border-radius: 20px;
+    padding: 1rem;
+  }
+
+  .stat-num {
+    font-size: 1.7rem;
+  }
 }

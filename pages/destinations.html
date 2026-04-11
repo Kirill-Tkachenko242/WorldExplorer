@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Discover handpicked destinations from World Explore across Europe, Asia, the Americas and Africa."
+  />
+  <meta
+    name="keywords"
+    content="travel destinations, holidays, world explore, brazil, ireland, russia, greece, kenya"
+  />
+  <title>Destinations - World Explore</title>
+  <link rel="icon" type="image/png" href="../content/images/worldexplore.png" />
+  <link rel="stylesheet" href="../css/bootstrap-5.3.8-dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../css/fontawesome-free-7.2.0-web/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg we-navbar fixed-top scrolled" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand we-brand" href="../index.html">
+        <img
+          src="../content/images/worldexplore.png"
+          alt="World Explore logo"
+          style="height: 40px; margin-right: 2px;"
+        />
+        <span class="logo-text">World <strong>Explore</strong></span>
+      </a>
+      <button
+        class="navbar-toggler we-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navMenu"
+        aria-controls="navMenu"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span><i class="fa fa-bars"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="destinations.html">Destinations</a></li>
+          <li class="nav-item"><a class="nav-link" href="experiences.html">Experiences</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link btn-book" href="booking.html">Book Now</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <p class="section-label">Handpicked for You</p>
+      <h1>Our <span class="accent">Destinations</span></h1>
+      <p>Every destination we offer has been personally vetted by our team.</p>
+    </div>
+  </div>
+
+  <section class="filter-bar bg-white py-4">
+    <div class="container text-center">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="brazil">Brazil</button>
+      <button class="filter-btn" data-filter="africa">Africa</button>
+      <button class="filter-btn" data-filter="europe">Europe</button>
+      <button class="filter-btn" data-filter="russia">Russia</button>
+      <button class="filter-btn" data-filter="ireland">Ireland</button>
+      <button class="filter-btn" data-filter="asia">Asia</button>
+      <button class="filter-btn" data-filter="americas">Americas</button>
+    </div>
+  </section>
+
+  <section class="dest-grid">
+    <div class="container">
+      <div class="row g-4" id="destGrid">
+        <div class="col-md-4 dest-item" data-region="brazil">
+          <div class="dest-card-full">
+            <div class="dest-img dest-img-1"></div>
+            <div class="dest-info">
+              <span class="dest-tag">Brazil</span>
+              <div class="dest-rating">5 stars <small>(142 reviews)</small></div>
+              <h3>Rio de Janeiro, Brazil</h3>
+              <p>Sugarloaf heights, drifting cable lines and the quiet pulse of Rio.</p>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="dest-price">From &euro;1,899</span>
+                <a href="booking.html?query=Rio%20de%20Janeiro%20Brazil" class="btn we-btn-main btn-sm">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 dest-item" data-region="russia">
+          <div class="dest-card-full">
+            <div class="dest-img dest-img-2"></div>
+            <div class="dest-info">
+              <span class="dest-tag">Russia</span>
+              <div class="dest-rating">5 stars <small>(98 reviews)</small></div>
+              <h3>Moscow, Russia</h3>
+              <p>Rising spires, painted patterns and the timeless soul of Moscow.</p>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="dest-price">From &euro;2,599</span>
+                <a href="booking.html?query=Moscow%20Russia" class="btn we-btn-main btn-sm">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 dest-item" data-region="ireland">
+          <div class="dest-card-full">
+            <div class="dest-img dest-img-3"></div>
+            <div class="dest-info">
+              <span class="dest-tag">Ireland</span>
+              <div class="dest-rating">5 stars <small>(76 reviews)</small></div>
+              <h3>Cobh, Ireland</h3>
+              <p>Harbor views, vibrant homes and the timeless soul of County Cork.</p>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="dest-price">From &euro;500</span>
+                <a href="booking.html?query=Cobh%20Ireland" class="btn we-btn-main btn-sm">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 dest-item" data-region="europe">
+          <div class="dest-card-full">
+            <div class="dest-img" style="background-image: url('../content/images/greece.jpg');"></div>
+            <div class="dest-info">
+              <span class="dest-tag">Europe</span>
+              <div class="dest-rating">4.5 stars <small>(211 reviews)</small></div>
+              <h3>Santorini, Greece</h3>
+              <p>Whitewashed villages, volcanic beaches and sunsets that turn the sky into a painting.</p>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="dest-price">From &euro;1,499</span>
+                <a href="booking.html?query=Santorini%20Greece" class="btn we-btn-main btn-sm">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 dest-item" data-region="asia">
+          <div class="dest-card-full">
+            <div class="dest-img" style="background-image: url('../content/images/bali.jpg');"></div>
+            <div class="dest-info">
+              <span class="dest-tag">Asia</span>
+              <div class="dest-rating">5 stars <small>(189 reviews)</small></div>
+              <h3>Bali, Indonesia</h3>
+              <p>Rice terraces, spiritual ceremonies and turquoise waters on the Island of the Gods.</p>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="dest-price">From &euro;1,099</span>
+                <a href="booking.html?query=Bali%20Indonesia" class="btn we-btn-main btn-sm">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 dest-item" data-region="americas">
+          <div class="dest-card-full">
+            <div class="dest-img" style="background-image: url('../content/images/peru.jpg');"></div>
+            <div class="dest-info">
+              <span class="dest-tag">Americas</span>
+              <div class="dest-rating">5 stars <small>(134 reviews)</small></div>
+              <h3>Machu Picchu, Peru</h3>
+              <p>The lost city of the Incas, perched in misty mountains above the Sacred Valley.</p>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="dest-price">From &euro;1,799</span>
+                <a href="booking.html?query=Machu%20Picchu%20Peru" class="btn we-btn-main btn-sm">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 dest-item" data-region="africa">
+          <div class="dest-card-full">
+            <div class="dest-img" style="background-image: url('../content/images/safari.jpg');"></div>
+            <div class="dest-info">
+              <span class="dest-tag">Africa</span>
+              <div class="dest-rating">5 stars <small>(400 reviews)</small></div>
+              <h3>Narok, Kenya</h3>
+              <p>Unlock the magic of East Africa with a safari full of wildlife encounters and unforgettable moments.</p>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="dest-price">From &euro;1,500</span>
+                <a href="booking.html?query=Narok%20Kenya" class="btn we-btn-main btn-sm">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 dest-item" data-region="europe">
+          <div class="dest-card-full">
+            <div class="dest-img" style="background-image: url('../content/images/iceland.jpg');"></div>
+            <div class="dest-info">
+              <span class="dest-tag">Europe</span>
+              <div class="dest-rating">5 stars <small>(1000 reviews)</small></div>
+              <h3>Jokulsarlon, Iceland</h3>
+              <p>Discover Iceland's winter wonderland, where towering glaciers meet the aurora borealis.</p>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="dest-price">From &euro;1,900</span>
+                <a href="booking.html?query=Jokulsarlon%20Iceland" class="btn we-btn-main btn-sm">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 dest-item" data-region="asia">
+          <div class="dest-card-full">
+            <div class="dest-img" style="background-image: url('../content/images/turkey.jpg');"></div>
+            <div class="dest-info">
+              <span class="dest-tag">Asia</span>
+              <div class="dest-rating">5 stars <small>(1400 reviews)</small></div>
+              <h3>Cappadocia, Turkey</h3>
+              <p>Discover Turkey's iconic sunrise balloon ride over fairy chimneys and endless horizons.</p>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="dest-price">From &euro;1,200</span>
+                <a href="booking.html?query=Cappadocia%20Turkey" class="btn we-btn-main btn-sm">Book</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container text-center">
+      <h2>Can't Decide? Let Us Help.</h2>
+      <p>Our travel experts will craft the perfect itinerary just for you.</p>
+      <a href="contact.html" class="btn we-btn-main btn-lg mt-3">Talk to an Expert</a>
+    </div>
+  </section>
+
+  <footer class="we-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="we-brand mb-3">
+            <img
+              src="../content/images/worldexplore.png"
+              alt="World Explore logo"
+              style="height: 40px; margin-right: 2px;"
+            />
+            <span class="logo-text">World <strong>Explore</strong></span>
+          </div>
+          <p>Crafting extraordinary travel experiences. Every journey is a story waiting to be written.</p>
+          <div class="social-links mt-3">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <h5>Explore</h5>
+          <ul class="footer-links">
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="experiences.html">Experiences</a></li>
+            <li><a href="booking.html">Book Now</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h5>Company</h5>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5>Newsletter</h5>
+          <p>Get travel inspiration straight to your inbox.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email address" class="form-control we-input" id="newsletterEmail" />
+            <button class="btn we-btn-main mt-2 w-100" onclick="subscribeNewsletter()">Subscribe</button>
+            <small id="newsletter-msg" class="mt-1 d-block"></small>
+          </div>
+        </div>
+      </div>
+      <hr class="footer-divider" />
+      <div class="row footer-bottom">
+        <div class="col-md-6"><p>&copy; 2026 World Explore. All rights reserved.</p></div>
+        <div class="col-md-6 text-md-end"><p>Designed for adventurers worldwide.</p></div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
+
+  <script src="../js/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/jquery-4.0.0.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

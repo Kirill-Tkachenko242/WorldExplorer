@@ -253,3 +253,427 @@ $(document).ready(function () {
     bookDateInput.min = tomorrow.toISOString().split('T')[0];
   }
 });
+
+/* Izabel part
+   This code is for:
+   - index
+   - destinations
+   Active menu logic:
+   https://stackoverflow.com/questions/3963495/jquery-set-active-menu-item
+
+   jQuery animate counter:
+   https://api.jquery.com/animate/
+
+   IntersectionObserver animation:
+   https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+
+   URLSearchParams:
+   https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
+
+   jQuery form validation pattern:
+   https://jqueryvalidation.org/
+
+   jQuery events:
+   https://api.jquery.com/category/events/  */
+
+$(document).ready(function () {
+  // this makes the correct menu link stay active
+  const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+
+  $('#mainNav .nav-link').removeClass('active');
+  $('#mainNav .nav-link').each(function () {
+    const linkPage = ($(this).attr('href') || '').split('/').pop().toLowerCase();
+    if (linkPage === currentPage) {
+      $(this).addClass('active');
+    }
+  });
+
+  /* Home page */
+
+  // this animates the numbers on the home page
+  function animateCounters() {
+    $('.stat-num').each(function () {
+      const $counter = $(this);
+      const target = parseInt($counter.data('target'), 10);
+      if (!target || $counter.data('animated')) return;
+
+      $counter.data('animated', true);
+      $({ count: 0 }).animate(
+        { count: target },
+        {
+          duration: 1800,
+          easing: 'swing',
+          step: function () {
+            $counter.text(Math.ceil(this.count).toLocaleString());
+          },
+          complete: function () {
+            $counter.text(target.toLocaleString());
+          }
+        }
+      );
+    });
+  }
+
+  // this starts the number animation only when the hero is visible
+  const heroEl = document.getElementById('hero');
+  if (heroEl) {
+    const heroObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCounters();
+            heroObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    heroObserver.observe(heroEl);
+  }
+
+  // this only allows dates from tomorrow
+  const heroSearchDate = document.getElementById('heroSearchDate');
+  if (heroSearchDate) {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    heroSearchDate.min = tomorrow.toISOString().split('T')[0];
+  }
+
+  // this sends the home page search to booking.html
+  const heroSearchForm = document.getElementById('heroSearchForm');
+  if (heroSearchForm) {
+    heroSearchForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const params = new URLSearchParams();
+      const query = ($('#heroSearchQuery').val() || '').trim();
+      const date = $('#heroSearchDate').val();
+      const travellers = $('#heroSearchTravellers').val();
+
+      if (query) params.set('query', query);
+      if (date) params.set('date', date);
+      if (travellers) params.set('travellers', travellers);
+
+      const bookingUrl = params.toString() ? `pages/booking.html?${params.toString()}` : 'pages/booking.html';
+      window.location.href = bookingUrl;
+    });
+  }
+
+  /* Destinations page */
+
+  // this filters the destination cards by region
+  $('.filter-btn').on('click', function () {
+    $('.filter-btn').removeClass('active');
+    $(this).addClass('active');
+
+    const filter = $(this).data('filter');
+    if (filter === 'all') {
+      $('.dest-item').fadeIn(300);
+    } else {
+      $('.dest-item').hide();
+      $(`.dest-item[data-region="${filter}"]`).fadeIn(300);
+    }
+  });
+
+  // this scrolls from the hero section to the featured part
+  $('.hero-scroll-hint').on('click', function () {
+    const featuredSection = $('#featured');
+    if (!featuredSection.length) return;
+    $('html, body').animate({ scrollTop: featuredSection.offset().top - 70 }, 600);
+  });
+
+  $('#contactForm').on('submit', function (event) {
+    event.preventDefault();
+
+    let valid = true;
+    const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const validators = [
+      {
+        input: '#contactName',
+        error: '#nameError',
+        test: (value) => value.length >= 2,
+        message: 'Please enter your full name.'
+      },
+      {
+        input: '#contactEmail',
+        error: '#emailError',
+        test: (value) => emailRx.test(value),
+        message: 'Please enter a valid email address.'
+      },
+      {
+        input: '#contactSubject',
+        error: '#subjectError',
+        test: (value) => value.length >= 3,
+        message: 'Please enter a subject.'
+      },
+      {
+        input: '#contactMsg',
+        error: '#msgError',
+        test: (value) => value.length >= 10,
+        message: 'Message must be at least 10 characters.'
+      }
+    ];
+
+    validators.forEach((field) => {
+      const $input = $(field.input);
+      const value = ($input.val() || '').trim();
+      if (!field.test(value)) {
+        $input.addClass('form-error');
+        $(field.error).text(field.message).show();
+        valid = false;
+      } else {
+        $input.removeClass('form-error');
+        $(field.error).hide();
+      }
+    });
+
+    if (valid) {
+      $('#formSuccessMsg').fadeIn(300);
+      $('#contactForm')[0].reset();
+      setTimeout(() => $('#formSuccessMsg').fadeOut(300), 5000);
+    }
+  });
+
+  $('input.we-field, textarea.we-field, select.we-select').on('input change', function () {
+    if (($(this).val() || '').toString().trim().length > 0) {
+      $(this).removeClass('form-error');
+    }
+  });
+
+  /* Extra support for my pages */
+
+  // list of destinations used to connect my pages with booking
+  const destinationCatalog = {
+    'kyoto-japan': {
+      name: 'Kyoto, Japan',
+      price: 1299,
+      aliases: ['kyoto', 'japan', 'kyoto japan']
+    },
+    'serengeti-tanzania': {
+      name: 'Serengeti, Tanzania',
+      price: 2599,
+      aliases: ['serengeti', 'tanzania', 'safari', 'africa safari']
+    },
+    'patagonia-chile': {
+      name: 'Patagonia, Chile',
+      price: 1899,
+      aliases: ['patagonia', 'chile', 'hiking', 'trekking']
+    },
+    'santorini-greece': {
+      name: 'Santorini, Greece',
+      price: 1499,
+      aliases: ['santorini', 'greece']
+    },
+    'bali-indonesia': {
+      name: 'Bali, Indonesia',
+      price: 1099,
+      aliases: ['bali', 'indonesia', 'beach', 'wellness']
+    },
+    'machu-picchu-peru': {
+      name: 'Machu Picchu, Peru',
+      price: 1799,
+      aliases: ['machu picchu', 'peru', 'inca trail', 'history']
+    },
+    'rio-brazil': {
+      name: 'Rio de Janeiro, Brazil',
+      price: 1899,
+      aliases: ['rio', 'rio de janeiro', 'brazil']
+    },
+    'moscow-russia': {
+      name: 'Moscow, Russia',
+      price: 2599,
+      aliases: ['moscow', 'russia']
+    },
+    'cobh-ireland': {
+      name: 'Cobh, Ireland',
+      price: 500,
+      aliases: ['cobh', 'ireland', 'county cork']
+    },
+    'narok-kenya': {
+      name: 'Narok, Kenya',
+      price: 1500,
+      aliases: ['narok', 'kenya']
+    },
+    'jokulsarlon-iceland': {
+      name: 'Jokulsarlon, Iceland',
+      price: 1900,
+      aliases: ['jokulsarlon', 'iceland']
+    },
+    'cappadocia-turkey': {
+      name: 'Cappadocia, Turkey',
+      price: 1200,
+      aliases: ['cappadocia', 'turkey', 'balloon']
+    }
+  };
+
+  // this makes sure booking has the same destinations from my pages
+  function ensureBookingOptions() {
+    const bookingSelect = document.getElementById('bookDest');
+    if (!bookingSelect) return;
+
+    const existingValues = new Set();
+    Array.from(bookingSelect.options).forEach((option) => {
+      if (!option.value) return;
+      existingValues.add(option.value);
+      if (destinationCatalog[option.value]) {
+        option.textContent = `${destinationCatalog[option.value].name} - from EUR ${destinationCatalog[option.value].price.toLocaleString()}`;
+      }
+    });
+
+    Object.entries(destinationCatalog).forEach(([value, destination]) => {
+      if (existingValues.has(value)) return;
+      const option = document.createElement('option');
+      option.value = value;
+      option.textContent = `${destination.name} - from EUR ${destination.price.toLocaleString()}`;
+      bookingSelect.appendChild(option);
+    });
+  }
+
+  // this checks which booking step is active
+  function inferActiveStep() {
+    const activeStepId = $('.booking-step.active').attr('id') || 'step1';
+    const stepNumber = parseInt(activeStepId.replace('step', ''), 10);
+    return Number.isNaN(stepNumber) ? 1 : stepNumber;
+  }
+
+  // this shows or hides the back button in booking
+  function syncBookingNav() {
+    const stepNumber = inferActiveStep();
+    window.currentStepVal = stepNumber;
+
+    const prevBtn = document.getElementById('prevBtn');
+    if (prevBtn) {
+      prevBtn.style.display = stepNumber > 1 ? 'inline-block' : 'none';
+    }
+  }
+
+  // this tries to match the search text with a destination
+  function findDestinationByQuery(query) {
+    const normalizedQuery = (query || '').toLowerCase();
+    let matchedKey = '';
+
+    Object.entries(destinationCatalog).forEach(([value, destination]) => {
+      if (matchedKey) return;
+      if (destination.aliases.some((alias) => normalizedQuery.includes(alias))) {
+        matchedKey = value;
+      }
+    });
+
+    return matchedKey;
+  }
+
+  // this updates the booking summary with the correct values
+  function updateExtendedBookingSummary() {
+    const bookingSelect = document.getElementById('bookDest');
+    if (!bookingSelect) return;
+
+    const destinationValue = bookingSelect.value;
+    const travellers = parseInt($('#bookTravellers').val(), 10) || 1;
+    const type = $('#bookType').val() || 'standard';
+    const typeExtra = { standard: 0, comfort: 300, luxury: 700 };
+    const destination = destinationCatalog[destinationValue];
+
+    if (!destination) return;
+
+    const basePrice = destination.price + (typeExtra[type] || 0);
+    const totalPrice = basePrice * travellers;
+
+    $('#summaryDest').text(destination.name);
+    $('#summaryTravellers').text(travellers);
+    $('#summaryType').text(type.charAt(0).toUpperCase() + type.slice(1));
+    $('#summaryBase').text(`EUR ${basePrice.toLocaleString()} per person`);
+    $('#summaryTotal').text(`EUR ${totalPrice.toLocaleString()}`);
+  }
+
+  // this reads the values coming from home or destinations page
+  function applyExtendedBookingParams() {
+    const bookingSelect = document.getElementById('bookDest');
+    if (!bookingSelect) return;
+
+    const params = new URLSearchParams(window.location.search);
+    if (!params.toString()) return;
+
+    const query = (params.get('query') || '').trim();
+    const date = params.get('date') || '';
+    const travellers = params.get('travellers') || '';
+    const summary = document.getElementById('bookingSearchSummary');
+    const notesField = document.getElementById('bookNotes');
+
+    if (date && document.getElementById('bookDate')) {
+      $('#bookDate').val(date);
+    }
+
+    if (travellers && document.getElementById('bookTravellers')) {
+      $('#bookTravellers').val(travellers);
+    }
+
+    if (query) {
+      const matchedDestination = findDestinationByQuery(query);
+      if (matchedDestination) {
+        $('#bookDest').val(matchedDestination);
+        if (notesField) {
+          notesField.value = notesField.value
+            .split('\n')
+            .filter((line) => !line.startsWith('Requested activity/location:'))
+            .join('\n')
+            .trim();
+        }
+      } else if (notesField) {
+        const currentNotes = notesField.value.trim();
+        notesField.value = currentNotes
+          ? `${currentNotes}\nRequested activity/location: ${query}`
+          : `Requested activity/location: ${query}`;
+      }
+    }
+
+    if (summary) {
+      const details = [];
+      if (query) details.push(`<strong>Search:</strong> ${query}`);
+      if (date) details.push(`<strong>Date:</strong> ${date}`);
+      if (travellers) details.push(`<strong>People:</strong> ${travellers}`);
+
+      if (details.length) {
+        summary.innerHTML = details.join(' <span class="mx-2">&bull;</span> ');
+        summary.style.display = 'block';
+      }
+    }
+  }
+
+  // run the helpers needed for the pages to work together
+  ensureBookingOptions();
+  applyExtendedBookingParams();
+  syncBookingNav();
+  updateExtendedBookingSummary();
+
+  $('#bookDest, #bookTravellers, #bookType').on('change', function () {
+    updateExtendedBookingSummary();
+  });
+
+  if (!window.__weBookingWrapped && typeof window.nextStep === 'function' && typeof window.prevStep === 'function') {
+    const originalNext = window.nextStep;
+    const originalPrev = window.prevStep;
+
+    window.nextStep = function () {
+      originalNext();
+      syncBookingNav();
+      updateExtendedBookingSummary();
+    };
+
+    window.prevStep = function () {
+      originalPrev();
+      syncBookingNav();
+      updateExtendedBookingSummary();
+    };
+
+    window.__weBookingWrapped = true;
+  }
+
+  $(window).trigger('scroll');
+});
+
+
+
+
+
