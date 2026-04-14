@@ -58,9 +58,7 @@ $(document).ready(function () {
     $('html, body').animate({ scrollTop: 0 }, 500);
   });
 
-  /*
-    Kirill - Experiences and Booking pages
-  */
+  /* Kirill - Experiences and Booking pages */
 
   let currentStep = 1;
   const totalSteps = 3;
