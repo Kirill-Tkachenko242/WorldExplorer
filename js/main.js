@@ -63,6 +63,8 @@ $(document).ready(function () {
   let currentStep = 1;
   const totalSteps = 3;
 
+  // Applies search parameters 
+  // Pre-fills booking form fields
   function applyBookingSearchParams() {
     const params = new URLSearchParams(window.location.search);
     if (!params.toString()) return;
@@ -125,6 +127,7 @@ $(document).ready(function () {
     }
   }
 
+  // Updates UI when user moves between steps
   function updateBookingStep(step) {
     for (let i = 1; i <= totalSteps; i++) {
       const dot = $(`.step[data-step="${i}"]`);
@@ -146,6 +149,7 @@ $(document).ready(function () {
     if (step === 3) updatePriceSummary();
   }
 
+  // Validates user input on each step
   function validateBookingStep(step) {
     if (step === 1) {
       const dest = $('#bookDest').val();
@@ -185,6 +189,7 @@ $(document).ready(function () {
     return true;
   }
 
+  // Calculates total price based on destination, travellers and experience type
   function updatePriceSummary() {
     const dest = $('#bookDest').val();
     const travellers = parseInt($('#bookTravellers').val()) || 1;
@@ -219,6 +224,7 @@ $(document).ready(function () {
     $('#summaryTotal').text('€' + total.toLocaleString());
   }
 
+  // Shows confirmation message and generates booking reference
   function submitBooking() {
     const name = $('#bookFirst').val() + ' ' + $('#bookLast').val();
     $('#bookingForm').hide();
