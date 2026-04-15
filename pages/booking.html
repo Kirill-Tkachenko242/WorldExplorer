@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
+  <!-- Navigation Bar-->
   <nav class="navbar navbar-expand-lg we-navbar fixed-top scrolled" id="mainNav">
     <div class="container">
       <a class="navbar-brand we-brand" href="../index.html">
@@ -48,6 +49,7 @@
     </div>
   </nav>
 
+  <!-- Page Header -->
   <div class="page-header">
     <div class="container">
       <p class="section-label">Your Adventure Starts Here</p>
@@ -57,6 +59,7 @@
     </div>
   </div>
 
+  <!-- Booking Section -->
   <section class="booking-section">
     <div class="container">
       <div class="booking-card" id="bookingForm">
@@ -74,9 +77,11 @@
           </div>
         </div>
 
+        <!-- Step 1 of Booking-->
         <div class="booking-step active" id="step1">
           <h4 style="font-family: Georgia, serif; color: #1a3c5e; margin-bottom: 1.5rem;">Step 1 - Choose Your Trip</h4>
 
+          <!-- Choose Destination -->
           <div class="mb-3">
             <label class="form-label" for="bookDest">Destination <span style="color: #dc3545;">*</span></label>
             <select class="we-select" id="bookDest" required>
@@ -96,6 +101,7 @@
             </select>
           </div>
 
+          <!-- Choose Date-->
           <div class="row g-3">
             <div class="col-md-6">
               <label class="form-label" for="bookDate">Departure Date <span style="color: #dc3545;">*</span></label>
@@ -114,6 +120,7 @@
             </div>
           </div>
 
+          <!-- Choose type of experience-->
           <div class="mt-3">
             <label class="form-label" for="bookType">Experience Type</label>
             <select class="we-select" id="bookType">
@@ -134,6 +141,10 @@
           </div>
         </div>
 
+        <!-- 
+          Step 2 of Booking 
+          Information about person
+        -->
         <div class="booking-step" id="step2">
           <h4 style="font-family: Georgia, serif; color: #1a3c5e; margin-bottom: 1.5rem;">Step 2 - Your Details</h4>
           <div class="row g-3">
@@ -153,6 +164,7 @@
               <label class="form-label" for="bookPhone">Phone Number</label>
               <input type="tel" class="form-control we-field" id="bookPhone" placeholder="+353 ..." />
             </div>
+            <!-- Pick your country -->
             <div class="col-12">
               <label class="form-label" for="bookCountry">Country of Residence</label>
               <select class="we-select" id="bookCountry">
@@ -171,6 +183,7 @@
                 <option>Other</option>
               </select>
             </div>
+            <!-- Terms and Conditions -->
             <div class="col-12">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="bookTerms" required />
@@ -183,6 +196,9 @@
           </div>
         </div>
 
+        <!-- Step 3
+         Confirmation of booking
+        -->
         <div class="booking-step" id="step3">
           <h4 style="font-family: Georgia, serif; color: #1a3c5e; margin-bottom: 1.5rem;">Step 3 - Confirm Your Booking</h4>
           <div class="price-summary">
@@ -215,6 +231,7 @@
         </div>
       </div>
 
+      <!-- Message-->
       <div class="booking-card" id="bookingSuccess">
         <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
         <h3>Booking Confirmed!</h3>
@@ -230,6 +247,7 @@
     </div>
   </section>
 
+  <!-- Features -->
   <section style="padding: 4rem 0; background: #fff;">
     <div class="container">
       <div class="row g-4 text-center">
@@ -264,6 +282,7 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer class="we-footer">
     <div class="container">
       <div class="row g-4">
