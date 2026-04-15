@@ -279,11 +279,13 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
 }
 
 /* 
-Kirill - Experiences and Booking pages
+  Kirill - Experiences and Booking pages
 */
-
+/* experiences page */
+/* Section background and spacing */
 .exp-section { padding: 4rem 0; background: var(--light-gray); }
 
+/* Card container */
 .exp-card {
   background: var(--white);
   border-radius: var(--radius);
@@ -312,6 +314,7 @@ Kirill - Experiences and Booking pages
   border-radius: 20px;
 }
 
+/* Card content */
 .exp-body {
   padding: 1.4rem;
   display: flex;
@@ -330,6 +333,7 @@ Kirill - Experiences and Booking pages
 .exp-duration { color: var(--mid-gray); }
 .exp-price { font-weight: 700; color: var(--jungle); font-size: 1rem; }
 
+/* booking page */
 .booking-search-summary {
   max-width: 760px;
   margin: 1.5rem auto 0;
