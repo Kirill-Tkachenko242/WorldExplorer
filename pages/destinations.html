@@ -18,6 +18,15 @@
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
+<!-- IZABEL part:
+       Bootstrap Navbar: https://getbootstrap.com/docs/5.3/components/navbar/
+       Bootstrap Grid: https://getbootstrap.com/docs/5.3/layout/grid/
+       Bootstrap Buttons: https://getbootstrap.com/docs/5.3/components/buttons/
+       Font Awesome icons: https://docs.fontawesome.com/web/add-icons/how-to/
+       This page shows the destination options, region filters,
+       and booking links for each card -->
+
+  <!-- Navigation bar using Bootstrap navbar classes. -->
   <nav class="navbar navbar-expand-lg we-navbar fixed-top scrolled" id="mainNav">
     <div class="container">
       <a class="navbar-brand we-brand" href="../index.html">
@@ -51,7 +60,7 @@
       </div>
     </div>
   </nav>
-
+ <!-- Top header that introduces the destinations page. -->
   <div class="page-header">
     <div class="container">
       <p class="section-label">Handpicked for You</p>
@@ -59,7 +68,7 @@
       <p>Every destination we offer has been personally vetted by our team.</p>
     </div>
   </div>
-
+ <!-- Filter buttons used to show destinations by region. -->
   <section class="filter-bar bg-white py-4">
     <div class="container text-center">
       <button class="filter-btn active" data-filter="all">All</button>
@@ -72,7 +81,7 @@
       <button class="filter-btn" data-filter="americas">Americas</button>
     </div>
   </section>
-
+<!-- Main destination cards area built with Bootstrap grid and custom cards. -->
   <section class="dest-grid">
     <div class="container">
       <div class="row g-4" id="destGrid">
@@ -222,7 +231,7 @@
       </div>
     </div>
   </section>
-
+  <!-- Call-to-action section for users who want help choosing a destination. -->
   <section class="cta-banner">
     <div class="container text-center">
       <h2>Can't Decide? Let Us Help.</h2>
@@ -230,7 +239,7 @@
       <a href="contact.html" class="btn we-btn-main btn-lg mt-3">Talk to an Expert</a>
     </div>
   </section>
-
+  <!-- Footer with navigation links, social icons and newsletter input. -->
   <footer class="we-footer">
     <div class="container">
       <div class="row g-4">

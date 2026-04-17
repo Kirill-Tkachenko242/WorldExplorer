@@ -254,30 +254,22 @@ $(document).ready(function () {
   }
 });
 
-/* Izabel part
+/* IZABEL Part
    This code is for:
-   - index
-   - destinations
-   Active menu logic:
-   https://stackoverflow.com/questions/3963495/jquery-set-active-menu-item
+   - index.html
+   - destinations.html
+   - jQuery .on(): https://api.jquery.com/on/
+   - jQuery .animate(): https://api.jquery.com/animate/
+   - jQuery .val(): https://api.jquery.com/val/
+   - MDN URLSearchParams: https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
+   - MDN Intersection Observer API: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
 
-   jQuery animate counter:
-   https://api.jquery.com/animate/
-
-   IntersectionObserver animation:
-   https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
-
-   URLSearchParams:
-   https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
-
-   jQuery form validation pattern:
-   https://jqueryvalidation.org/
-
-   jQuery events:
-   https://api.jquery.com/category/events/  */
+   This part keeps the correct nav link active, animates the
+   counters on the home page, sends the search form to booking,
+   and filters the destinations by region */
 
 $(document).ready(function () {
-  // this makes the correct menu link stay active
+  // this keeps the correct navbar link active on my pages
   const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
 
   $('#mainNav .nav-link').removeClass('active');
@@ -288,7 +280,7 @@ $(document).ready(function () {
     }
   });
 
-  /* Home page */
+/* Home page - counter effect based on the jQuery animate() docs */
 
   // this animates the numbers on the home page
   function animateCounters() {
@@ -314,7 +306,7 @@ $(document).ready(function () {
     });
   }
 
-  // this starts the number animation only when the hero is visible
+   // this starts the number animation only when the hero is visible
   const heroEl = document.getElementById('hero');
   if (heroEl) {
     const heroObserver = new IntersectionObserver(
@@ -332,7 +324,7 @@ $(document).ready(function () {
     heroObserver.observe(heroEl);
   }
 
-  // this only allows dates from tomorrow
+	// this only allows dates from tomorrow
   const heroSearchDate = document.getElementById('heroSearchDate');
   if (heroSearchDate) {
     const tomorrow = new Date();
@@ -360,7 +352,8 @@ $(document).ready(function () {
     });
   }
 
-  /* Destinations page */
+
+  /* Destinations page - filter buttons use jQuery click events */
 
   // this filters the destination cards by region
   $('.filter-btn').on('click', function () {
@@ -441,8 +434,7 @@ $(document).ready(function () {
       $(this).removeClass('form-error');
     }
   });
-
-  /* Extra support for my pages */
+  /* Extra support for my pages - this helps my pages connect with booking.html */
 
   // list of destinations used to connect my pages with booking
   const destinationCatalog = {
@@ -672,6 +664,7 @@ $(document).ready(function () {
 
   $(window).trigger('scroll');
 });
+/* enf of izabel part */
 
 
 

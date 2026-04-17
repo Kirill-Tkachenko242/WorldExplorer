@@ -430,24 +430,19 @@ Kirill - Experiences and Booking pages
   .cta-banner h2 { font-size: 1.8rem; }
 }
 
-/* Izabel part
-   These styles are for my pages:
-   - index
-   - destinations
-   Card hover effects:
-   https://css-tricks.com/almanac/properties/t/transform/
+/* IZABEL part
+   These styles are for:
+   - index.html
+   - destinations.html
+   - Bootstrap Navbar: https://getbootstrap.com/docs/5.3/components/navbar/
+   - Bootstrap Grid: https://getbootstrap.com/docs/5.3/layout/grid/
+   - Bootstrap Buttons: https://getbootstrap.com/docs/5.3/components/buttons/
+   - MDN CSS custom properties: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+   - MDN Media Queries: https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries
+   - MDN Flexbox: https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Flexbox
 
-   Glassmorphism search box:
-   https://css.glass
-
-   CSS variables:
-   https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
-
-   Responsive media queries:
-   https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries
-
-   Flexbox layout:
-   https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+   This part styles the home hero, destination cards, filter buttons,
+   and other sections used in my pages. */
 
 /* small title area used in my sections */
 .section-header {
