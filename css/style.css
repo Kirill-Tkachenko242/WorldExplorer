@@ -1012,7 +1012,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
   margin-bottom: 1.5rem;
 }
 
-/* Form labels */*/
+/* Form labels */
 .form-label {
   color: var(--ocean);
   font-size: 0.88rem;
