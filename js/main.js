@@ -700,7 +700,6 @@ $(document).ready(function () {
 
   $(window).trigger('scroll');
 });
-/* enf of izabel part */
 
 
 
