@@ -20,9 +20,12 @@ $(document).ready(function () {
     }
   });
 
-  window.subscribeNewsletter = function () {
+  // Newsletter subscription validation and Validates email
+  window.subscribeNewsletter = function() {
     const email = $('#newsletterEmail').val().trim();
     const msg = $('#newsletter-msg');
+    
+    // Regular expression for email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!email) {
@@ -30,12 +33,18 @@ $(document).ready(function () {
     } else if (!emailRegex.test(email)) {
       msg.text('Please enter a valid email address.').css('color', '#ff6b6b');
     } else {
+      // Success feedback
       msg.text('You\'re subscribed! Welcome aboard.').css('color', '#D6A126');
+      
+      // Clear input field
       $('#newsletterEmail').val('');
+      
+      // Remove message
       setTimeout(() => msg.text(''), 4000);
     }
   };
 
+  // Scroll animation
   const fadeEls = document.querySelectorAll('.dest-card, .why-card, .exp-card, .team-card, .value-card, .testimonial-card');
   const fadeObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -46,7 +55,8 @@ $(document).ready(function () {
       }
     });
   }, { threshold: 0.1 });
-
+ 
+ // Initial hidden state for animation
   fadeEls.forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
@@ -54,17 +64,19 @@ $(document).ready(function () {
     fadeObserver.observe(el);
   });
 
+
+  //Back-to-top button functionality Smooth scroll to top of page
   $('.back-to-top').on('click', function () {
     $('html, body').animate({ scrollTop: 0 }, 500);
   });
 
-  /*
-    Kirill - Experiences and Booking pages
-  */
+  /* Kirill - Experiences and Booking pages */
 
   let currentStep = 1;
   const totalSteps = 3;
 
+  // Applies search parameters 
+  // Pre-fills booking form fields
   function applyBookingSearchParams() {
     const params = new URLSearchParams(window.location.search);
     if (!params.toString()) return;
@@ -127,6 +139,7 @@ $(document).ready(function () {
     }
   }
 
+  // Updates UI when user moves between steps
   function updateBookingStep(step) {
     for (let i = 1; i <= totalSteps; i++) {
       const dot = $(`.step[data-step="${i}"]`);
@@ -148,6 +161,7 @@ $(document).ready(function () {
     if (step === 3) updatePriceSummary();
   }
 
+  // Validates user input on each step
   function validateBookingStep(step) {
     if (step === 1) {
       const dest = $('#bookDest').val();
@@ -187,6 +201,7 @@ $(document).ready(function () {
     return true;
   }
 
+  // Calculates total price based on destination, travellers and experience type
   function updatePriceSummary() {
     const dest = $('#bookDest').val();
     const travellers = parseInt($('#bookTravellers').val()) || 1;
@@ -221,6 +236,7 @@ $(document).ready(function () {
     $('#summaryTotal').text('€' + total.toLocaleString());
   }
 
+  // Shows confirmation message and generates booking reference
   function submitBooking() {
     const name = $('#bookFirst').val() + ' ' + $('#bookLast').val();
     $('#bookingForm').hide();
@@ -375,13 +391,26 @@ $(document).ready(function () {
     if (!featuredSection.length) return;
     $('html, body').animate({ scrollTop: featuredSection.offset().top - 70 }, 600);
   });
-
+  
+/* ============================================================
+   CLEYTON — Contact Page + Shared user interface Logic
+   Handles:
+   - Navbar scroll behavior
+   - Back-to-top button
+   - Newsletter subscription validation
+   - Contact form validation
+   - Input feedback (UX improvement)
+   ============================================================ */
+  
+// Contact form validation prevents submission if inputs are invalid and improves data quality and user experience
   $('#contactForm').on('submit', function (event) {
     event.preventDefault();
 
     let valid = true;
+     // Email validation pattern
     const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+    // Validation rules for each field
     const validators = [
       {
         input: '#contactName',
@@ -408,27 +437,34 @@ $(document).ready(function () {
         message: 'Message must be at least 10 characters.'
       }
     ];
-
+    
+    // Loop through each field and validate
     validators.forEach((field) => {
       const $input = $(field.input);
       const value = ($input.val() || '').trim();
       if (!field.test(value)) {
+	 // Show error
         $input.addClass('form-error');
         $(field.error).text(field.message).show();
         valid = false;
       } else {
+	 // Remove error
         $input.removeClass('form-error');
         $(field.error).hide();
       }
     });
 
+    // If all fields are valid
     if (valid) {
       $('#formSuccessMsg').fadeIn(300);
+      // Reset form fields
       $('#contactForm')[0].reset();
+      // Hide success messag
       setTimeout(() => $('#formSuccessMsg').fadeOut(300), 5000);
     }
   });
 
+  
   $('input.we-field, textarea.we-field, select.we-select').on('input change', function () {
     if (($(this).val() || '').toString().trim().length > 0) {
       $(this).removeClass('form-error');
