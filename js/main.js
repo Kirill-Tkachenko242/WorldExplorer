@@ -277,8 +277,10 @@ $(document).ready(function () {
    - jQuery .on(): https://api.jquery.com/on/
    - jQuery .animate(): https://api.jquery.com/animate/
    - jQuery .val(): https://api.jquery.com/val/
-   - MDN URLSearchParams: https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
+   - MDN URLSearchParams: https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams and https://javascript.info/url
    - MDN Intersection Observer API: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+   - Filter: https://www.w3schools.com/howto/howto_js_filter_elements.asp
+   - Smooth Scroll: https://www.w3schools.com/howto/howto_css_smooth_scroll.asp#section2
 
    This part keeps the correct nav link active, animates the
    counters on the home page, sends the search form to booking,
@@ -700,7 +702,6 @@ $(document).ready(function () {
 
   $(window).trigger('scroll');
 });
-/* enf of izabel part */
 
 
 
