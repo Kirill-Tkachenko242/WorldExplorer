@@ -868,17 +868,23 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
   background-position: center;
 }
 
-/* Decorative gradient styles for team photos */
+/* Team photos */
 .team-t1 {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+    background-image: url('../content/images/cleyton.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .team-t2 {
-  background: linear-gradient(135deg, #f093fb, #f5576c);
+    background-image: url('../content/images/Izabel.png');
+    background-size: cover;
+    background-position: center;
 }
 
-.team-t3 {
-  background: linear-gradient(135deg, #4facfe, #00f2fe);
+.team-t1 {
+    background-image: url('../content/images/kirill.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 /* Team member name */
