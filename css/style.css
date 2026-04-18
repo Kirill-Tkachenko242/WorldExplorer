@@ -840,15 +840,24 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
 
 /* end of Izabel part */
 
+/*
+   Cleyton - About and Contact Pages Styles
+   These styles control layout, cards, and form user interface
+   for the About and Contact pages
+*/
+
+/* About page */
 .about-section {
   padding: 5rem 0;
 }
 
+/* Team member card */
 .team-card {
   text-align: center;
   transition: transform var(--transition), box-shadow var(--transition);
 }
 
+/* Circular team photo */
 .team-photo {
   width: 120px;
   height: 120px;
@@ -859,6 +868,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
   background-position: center;
 }
 
+/* Decorative gradient styles for team photos */
 .team-t1 {
   background: linear-gradient(135deg, #667eea, #764ba2);
 }
@@ -871,11 +881,13 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
   background: linear-gradient(135deg, #4facfe, #00f2fe);
 }
 
+/* Team member name */
 .team-card h5 {
   color: var(--ocean);
   margin-bottom: 0.2rem;
 }
 
+/* Team title */
 .team-card small {
   color: var(--gold);
   display: block;
@@ -885,6 +897,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
   margin-bottom: 0.65rem;
 }
 
+/* Team description text */
 .team-card p,
 .value-card p {
   color: #63706a;
@@ -892,6 +905,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
   font-size: 0.92rem;
 }
 
+/* Value cards (mission, vision, etc.) */
 .value-card {
   height: 100%;
   background: var(--white);
@@ -903,27 +917,33 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
   transition: transform var(--transition), box-shadow var(--transition);
 }
 
+/* Icon inside value cards */
 .value-icon {
   font-size: 2.2rem;
   margin-bottom: 0.8rem;
   color: var(--gold);
 }
 
+/* Value card title */
 .value-card h4 {
   color: var(--ocean);
   margin-bottom: 0.5rem;
 }
 
+/* Contact Page Styles */
+
+/* Contact section */
 .contact-section {
   background: var(--light-gray);
   padding: 5rem 0;
 }
 
+/* Cards animation effect */
 .contact-info-card,
 .contact-form-wrap {
   transition: transform var(--transition), box-shadow var(--transition);
 }
-
+/* Left side of contact information card */
 .contact-info-card {
   height: 100%;
   background: var(--ocean);
@@ -933,16 +953,18 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
   box-shadow: var(--shadow);
 }
 
+/* Contact title */
 .contact-info-card h3 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
 
+/* Contact description text */
 .contact-info-card p {
   color: rgba(255, 255, 255, 0.82);
   margin-bottom: 1.8rem;
 }
-
+/* Each contact detail row icon and text */
 .contact-detail {
   display: flex;
   gap: 1rem;
@@ -950,6 +972,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
   margin-bottom: 1.3rem;
 }
 
+/* Icon circle */
 .contact-icon {
   width: 44px;
   height: 44px;
@@ -962,13 +985,14 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
   color: var(--gold);
 }
 
+/* Small label text */
 .contact-detail strong {
   display: block;
   opacity: 0.78;
   margin-bottom: 0.2rem;
   font-size: 0.84rem;
 }
-
+/* Right side of contact form container */
 .contact-form-wrap {
   background: var(--white);
   border-radius: var(--radius);
@@ -976,17 +1000,20 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
   box-shadow: var(--shadow);
 }
 
+/* Form title */
 .contact-form-wrap h3 {
   color: var(--ocean);
   margin-bottom: 1.5rem;
 }
 
+/* Form labels */*/
 .form-label {
   color: var(--ocean);
   font-size: 0.88rem;
   font-weight: 700;
 }
 
+/* Inputs and select fields */
 .form-control.we-field,
 .we-select {
   border: 1.5px solid #d6ddd8;
@@ -996,13 +1023,14 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
   transition: border-color var(--transition), box-shadow var(--transition);
 }
 
+/* Focus effect for inputs */
 .form-control.we-field:focus,
 .we-select:focus {
   border-color: var(--ocean);
   box-shadow: 0 0 0 3px rgba(15, 61, 46, 0.12);
   outline: none;
 }
-
+/* Success message after form submission */
 .form-error {
   border-color: #dc3545 !important;
 }
@@ -1017,7 +1045,10 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
   border-radius: 10px;
 }
 
+/*Responsive adjustments for smaller screens*/
+
 @media (max-width: 991px) {
+ /* Reduce spacing on smaller devices */
   .hero-content {
     grid-template-columns: 1fr;
   }
@@ -1042,15 +1073,16 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.15; }
     gap: 1rem 1.6rem;
   }
 
+   /* Add spacing between stacked elements */
   .contact-info-card {
     margin-bottom: 1rem;
   }
-
+ /* Reduce spacing on smaller devices */
   .about-section,
   .contact-section {
     padding: 4rem 0;
   }
-
+ /* Reduce padding inside cards */
   .contact-form-wrap,
   .contact-info-card {
     padding: 1.6rem;
