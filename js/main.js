@@ -21,6 +21,7 @@ $(document).ready(function () {
   });
 
   // Newsletter subscription validation and Validates email
+  window.subscribeNewsletter = function() {
     const email = $('#newsletterEmail').val().trim();
     const msg = $('#newsletter-msg');
     
